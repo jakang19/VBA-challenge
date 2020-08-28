@@ -3,7 +3,7 @@
 Using VBA scripting to analyze real stock market data. 
 
 ## Stock Market Analysis
-This script loops through all the stocks for one year and the output of the following information:
+This script loops through all the stocks for one year in the file `Multiple_year_stock_data.xlsx` and the output of the following information:
 - The ticker symbol
 - Yearly change from opening price at the beginning of a given year to the closing price at the end of that year.
   - Positive changes are highlighted in green
@@ -14,5 +14,6 @@ This script loops through all the stocks for one year and the output of the foll
 
 ## Submission
 This repository contains:
+- The file `Multiple_year_stock_data.xlsx`
 - A screen shot for each year of the results on the Multi Year Stock Data
 - VBA Scripts containing the code for analysis
