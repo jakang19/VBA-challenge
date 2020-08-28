@@ -1,7 +1,9 @@
 Sub StockAnalysis()
 
-    ' Loop through all worksheet
-    For Each WS In Worksheets
+    ' Loop through all worksheets
+    Dim WS As Worksheet
+    For Each WS In ActiveWorkbook.Worksheets
+        WS.Activate
         lastRow = WS.Cells(Rows.Count, 1).End(xlUp).row
         
         ' Headers
