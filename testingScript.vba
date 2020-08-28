@@ -30,15 +30,14 @@ Sub StockAnalysis()
         For i = 2 To lastRow
             ' check if ticker symbol has changed
             If Cells(i + 1, 1).Value <> Cells(i, 1).Value Then
-                ' update ticker name
+                ' Generate ticker name
                 ticker = Cells(i, 1).Value
                 Cells(row, 9).Value = ticker
-                ' update closePrice
                 closePrice = Cells(i, 6).Value
-                ' calc yearlyChange
+                ' Calculate yearlyChange
                 yearlyChange = closePrice - openPrice
                 Cells(row, 10).Value = yearlyChange
-                ' calc percentChange
+                ' Calculate percentChange
                 If (openPrice = 0 And closePrice = 0) Then
                     percentChange = 0
                 ElseIf (openPrice = 0 And closePrice <> 0) Then
@@ -48,7 +47,7 @@ Sub StockAnalysis()
                     Cells(row, 11).Value = percentChange
                     Cells(row, 11).NumberFormat = "0.00%"
                 End If
-                ' calc total Volume
+                ' Calculate total Volume
                 totalVol = totalVol + Cells(i, 7).Value
                 Cells(row, 12).Value = totalVol
                 ' go to next row
@@ -62,6 +61,17 @@ Sub StockAnalysis()
             End If
         Next i
         
-        'Conditional Formatting for Yearly Change
-    
+        ' Conditional Formatting for Yearly Change
+        ' Last row of yearlyChange for each WS
+        lastRowYC = WS.Cells(Rows.Count, 9).End(xlUp).row
+        ' Colors
+        For i = 2 To lastRowYC
+            If (Cells(i, 10).Value > 0 Or Cells(i, 10).Value = 0) Then
+                Cells(i, 10).Interior.ColorIndex = 10
+            ElseIf Cells(i, 10).Value < 0 Then
+                Cells(i, 10).Interior.ColorIndex = 3
+            End If
+        Next i
+        
+    Next WS
 End Sub
