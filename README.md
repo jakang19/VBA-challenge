@@ -14,6 +14,6 @@ This script loops through all the stocks for one year in the file `Multiple_year
 
 ## Submission
 This repository contains:
-- The file `Multiple_year_stock_data.xlsx`
+- The file `alphabetical_testing.xlsm`
 - A screen shot for each year of the results on the Multi Year Stock Data
 - VBA Scripts containing the code for analysis
