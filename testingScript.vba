@@ -73,5 +73,26 @@ Sub StockAnalysis()
             End If
         Next i
         
+        ' Calculate greatest % increase, greatest % decrease, greatest total volume
+        Cells(2, 15).Value = "Greatest % Increase"
+        Cells(3, 15).Value = "Greatest % Decrease"
+        Cells(4, 15).Value = "Greatest Total Volume"
+        Cells(1, 16).Value = "Ticker"
+        Cells(1, 17).Value = "Value"
+        
+        For i = 2 To lastRowYC
+            If Cells(i, 11).Value = Application.WorksheetFunction.Max(WS.Range("K2:K" & lastRowYC)) Then
+                Cells(2, 16).Value = Cells(i, 9).Value
+                Cells(2, 17).Value = Cells(i, 11).Value
+                Cells(2, 17).NumberFormat = "0.00%"
+            ElseIf Cells(i, 11).Value = Application.WorksheetFunction.Min(WS.Range("K2:K" & lastRowYC)) Then
+                Cells(3, 16).Value = Cells(i, 9).Value
+                Cells(3, 17).Value = Cells(i, 11).Value
+                Cells(3, 17).NumberFormat = "0.00%"
+            ElseIf Cells(i, 12).Value = Application.WorksheetFunction.Max(WS.Range("L2:L" & lastRowYC)) Then
+                Cells(4, 16).Value = Cells(i, 9).Value
+                Cells(4, 17).Value = Cells(i, 12).Value
+            End If
+        Next i
     Next WS
 End Sub
